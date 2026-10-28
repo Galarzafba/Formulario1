@@ -2,103 +2,115 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>DRIPhub - Streetwear & Luxury Caps</title>
+  <title>FARFETCH / DRIP - Streetwear & Luxury</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-zinc-950 text-zinc-100 font-sans">
+<body class="bg-white text-gray-900 font-sans antialiased">
 
-  <!-- Navegación -->
-  <nav class="bg-zinc-900 border-b border-zinc-800 p-4 flex justify-between items-center sticky top-0 z-40">
-    <h1 class="text-2xl font-black tracking-widest text-amber-400">DRIP<span class="text-white">HUB</span></h1>
-    <div id="authArea">
-      <button onclick="mostrarModalAuth()" class="bg-amber-400 text-zinc-950 px-4 py-2 rounded-md font-bold hover:bg-amber-300 transition">
-        Cuenta / Registro
-      </button>
+  <!-- Barra superior estilo Farfetch -->
+  <div class="bg-gray-100 text-xs py-2 text-center text-gray-700 border-b border-gray-200">
+    La guía de regalos <b>LUXURY STREETWEAR</b> ya está aquí — <a href="#" class="underline hover:text-black">explora más</a>
+  </div>
+
+  <!-- Navegación Principal -->
+  <header class="border-b border-gray-200 sticky top-0 bg-white/95 backdrop-blur-md z-40">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
+      
+      <!-- Lado Izquierdo: Buscador -->
+      <div class="flex items-center space-x-4 w-1/3">
+        <div class="relative w-full max-w-xs">
+          <input type="text" placeholder="Buscar marcas o prendas..." class="w-full pl-9 pr-3 py-1.5 bg-gray-50 border border-gray-300 rounded-md text-xs focus:outline-none focus:border-black">
+          <svg class="w-4 h-4 text-gray-400 absolute left-2.5 top-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        </div>
+      </div>
+
+      <!-- Centro: Logo Minimalista -->
+      <h1 class="text-2xl font-black tracking-tighter text-center uppercase">FARFETCH <span class="text-xs font-normal tracking-widest block text-gray-500">STREETWEAR</span></h1>
+
+      <!-- Lado Derecho: Accesos y Cuenta -->
+      <div class="flex items-center justify-end space-x-6 w-1/3">
+        <button class="text-gray-700 hover:text-black hidden sm:block">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.684a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+        </button>
+        <div id="authArea">
+          <button onclick="mostrarModalAuth()" class="text-xs font-bold uppercase tracking-wider border-b-2 border-black pb-0.5 hover:opacity-70 transition">
+            Ingresar / Registro
+          </button>
+        </div>
+      </div>
     </div>
-  </nav>
-
-  <!-- Banner Hero Streetwear -->
-  <header class="bg-zinc-900 border-b border-zinc-800 py-16 px-6 text-center relative overflow-hidden">
-    <span class="text-amber-400 text-xs font-bold tracking-widest uppercase mb-2 block">Colección Exclusiva 2026</span>
-    <h2 class="text-5xl font-extrabold mb-4 uppercase tracking-tight">Hellstar • Amiri • Valley Dreams</h2>
-    <p class="text-zinc-400 max-w-xl mx-auto mb-8 text-sm">
-      Drop oficial de streetwear, ropa urbana premium y gorras exclusivas Barbas Hats & Dandy.
-    </p>
-    <button onclick="mostrarModalAuth()" class="bg-white text-zinc-950 px-8 py-3 rounded-full font-black uppercase text-xs tracking-wider hover:bg-amber-400 transition shadow-lg">
-      Regístrate para ver novedades
-    </button>
   </header>
 
-  <main class="max-w-6xl mx-auto px-6 py-10">
-    <!-- Barra de Filtros -->
-    <div class="bg-zinc-900 p-5 rounded-xl border border-zinc-800 mb-10 flex flex-wrap gap-6 items-center">
-      <span class="font-bold text-amber-400 text-sm uppercase tracking-wider">Filtrar por:</span>
-      <div>
-        <label class="text-xs font-semibold text-zinc-400 block mb-1">Categoría</label>
-        <select id="selCategoria" onchange="cargarProductos()" class="bg-zinc-950 border border-zinc-800 p-2.5 rounded-lg text-sm text-zinc-200 focus:outline-none focus:border-amber-400">
-          <option value="">Todas las categorías</option>
-        </select>
+  <main class="max-w-7xl mx-auto px-6 py-8">
+    
+    <!-- Encabezado de la Sección -->
+    <div class="mb-6 border-b border-gray-100 pb-4">
+      <div class="flex space-x-6 text-sm font-semibold mb-4 text-gray-500">
+        <span class="cursor-pointer text-black border-b-2 border-black pb-1">Hombre</span>
+        <span class="cursor-pointer hover:text-black transition">Mujer</span>
       </div>
-      <div>
-        <label class="text-xs font-semibold text-zinc-400 block mb-1">Marca</label>
-        <select id="selMarca" onchange="cargarProductos()" class="bg-zinc-950 border border-zinc-800 p-2.5 rounded-lg text-sm text-zinc-200 focus:outline-none focus:border-amber-400">
-          <option value="">Todas las marcas</option>
-        </select>
-      </div>
+      <h2 class="text-3xl font-normal text-gray-900 tracking-tight">Streetwear & Luxury para hombre</h2>
     </div>
 
-    <!-- Catálogo de Productos -->
-    <h3 class="text-xl font-bold mb-6 text-zinc-100 uppercase tracking-wider">Catálogo Disponible</h3>
-    <div id="gridProductos" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
-
-    <!-- Formulario de Pedidos -->
-    <section class="bg-zinc-900 p-8 rounded-xl border border-zinc-800 mt-16 max-w-lg mx-auto">
-      <h3 class="text-xl font-bold mb-2 text-white text-center uppercase tracking-wide">Solicitudes y Cotizaciones</h3>
-      <p class="text-xs text-zinc-400 mb-6 text-center">¿Buscas algún modelo o talla especial de gorras o prendas? Escríbenos.</p>
+    <!-- Píldoras de Filtros estilo Farfetch -->
+    <div class="flex flex-wrap items-center gap-3 mb-8">
+      <div class="flex items-center bg-gray-50 border border-gray-300 rounded-md px-3 py-1.5 text-xs font-semibold">
+        <svg class="w-4 h-4 mr-1.5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2a1 1 0 01-.293.707L13 13.586V19a1 1 0 01-.553.894l-4 2A1 1 0 017 21v-7.414L3.293 6.707A1 1 0 013 6V4z"/></svg>
+        <span>Filtrar</span>
+      </div>
       
-      <form onsubmit="guardarContacto(event)" class="space-y-4">
-        <div>
-          <label class="block text-xs font-semibold text-zinc-400 mb-1">Nombre</label>
-          <input type="text" id="cNombre" placeholder="Tu nombre" required class="w-full bg-zinc-950 border border-zinc-800 p-3 rounded-lg text-sm text-white focus:outline-none focus:border-amber-400">
-        </div>
-        <div>
-          <label class="block text-xs font-semibold text-zinc-400 mb-1">Correo Electrónico</label>
-          <input type="email" id="cEmail" placeholder="correo@ejemplo.com" required class="w-full bg-zinc-950 border border-zinc-800 p-3 rounded-lg text-sm text-white focus:outline-none focus:border-amber-400">
-        </div>
-        <div>
-          <label class="block text-xs font-semibold text-zinc-400 mb-1">Mensaje o Modelo solicitado</label>
-          <textarea id="cMensaje" placeholder="Especifica modelo, marca y talla..." required class="w-full bg-zinc-950 border border-zinc-800 p-3 rounded-lg text-sm text-white h-24 focus:outline-none focus:border-amber-400"></textarea>
-        </div>
-        <button class="bg-amber-400 hover:bg-amber-300 text-zinc-950 w-full py-3 rounded-lg font-black text-xs uppercase tracking-wider transition">
+      <select id="selCategoria" onchange="cargarProductos()" class="bg-gray-50 border border-gray-300 rounded-md px-3 py-1.5 text-xs font-medium focus:outline-none focus:border-black">
+        <option value="">Todas las categorías</option>
+      </select>
+
+      <select id="selMarca" onchange="cargarProductos()" class="bg-gray-50 border border-gray-300 rounded-md px-3 py-1.5 text-xs font-medium focus:outline-none focus:border-black">
+        <option value="">Todas las marcas</option>
+      </select>
+    </div>
+
+    <!-- Grid de Productos -->
+    <div id="gridProductos" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10"></div>
+
+    <!-- Formulario de Contacto Estilo Editorial -->
+    <section class="border-t border-gray-200 mt-20 pt-12 max-w-xl mx-auto">
+      <h3 class="text-lg font-bold text-center uppercase tracking-wider mb-1">Contacto & Solicitudes</h3>
+      <p class="text-xs text-gray-500 text-center mb-6">¿Buscas una pieza exclusiva o consulta sobre tu cuenta?</p>
+      
+      <form onsubmit="guardarContacto(event)" class="space-y-3">
+        <input type="text" id="cNombre" placeholder="Nombre completo" required class="w-full border border-gray-300 p-2.5 text-xs rounded-sm focus:outline-none focus:border-black">
+        <input type="email" id="cEmail" placeholder="Correo electrónico" required class="w-full border border-gray-300 p-2.5 text-xs rounded-sm focus:outline-none focus:border-black">
+        <textarea id="cMensaje" placeholder="Mensaje o modelo solicitado..." required class="w-full border border-gray-300 p-2.5 text-xs rounded-sm h-24 focus:outline-none focus:border-black"></textarea>
+        <button class="bg-black text-white w-full py-3 text-xs uppercase tracking-widest font-bold hover:bg-gray-800 transition">
           Enviar Mensaje
         </button>
       </form>
     </section>
+
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-zinc-900 border-t border-zinc-800 text-zinc-500 text-center py-6 mt-16 text-xs">
-    <p>© 2026 DRIPHUB Streetwear - Hellstar, Amiri, Valley Dreams, Barbas Hats & Dandy</p>
+  <!-- Footer Farfetch -->
+  <footer class="bg-gray-100 border-t border-gray-200 mt-24 py-10 text-center text-xs text-gray-500">
+    <p>© 2026 FARFETCH / DRIP - Denim Tears, Hellstar, Amiri, Valley Dreams, Barbas Hats & Dandy</p>
   </footer>
 
   <!-- Modal Autenticación -->
-  <div id="modalAuth" class="hidden fixed inset-0 bg-black/80 backdrop-blur-md flex justify-center items-center z-50">
-    <div class="bg-zinc-900 p-6 rounded-xl border border-zinc-800 shadow-2xl w-86 max-w-sm">
-      <h3 id="modalTitulo" class="text-xl font-bold text-white mb-4 text-center">Iniciar Sesión</h3>
+  <div id="modalAuth" class="hidden fixed inset-0 bg-black/50 backdrop-blur-sm flex justify-center items-center z-50">
+    <div class="bg-white p-8 rounded-sm shadow-2xl w-86 max-w-sm relative">
+      <h3 id="modalTitulo" class="text-lg font-bold text-gray-900 mb-4 text-center uppercase tracking-wider">Iniciar Sesión</h3>
       
       <form onsubmit="procesarAuth(event)" class="space-y-3">
-        <input type="text" id="aNombre" placeholder="Nombre completo" class="hidden w-full bg-zinc-950 border border-zinc-800 p-3 rounded-lg text-sm text-white focus:outline-none focus:border-amber-400">
-        <input type="email" id="aEmail" placeholder="Correo electrónico" required class="w-full bg-zinc-950 border border-zinc-800 p-3 rounded-lg text-sm text-white focus:outline-none focus:border-amber-400">
-        <input type="password" id="aPassword" placeholder="Contraseña" required class="w-full bg-zinc-950 border border-zinc-800 p-3 rounded-lg text-sm text-white focus:outline-none focus:border-amber-400">
-        <button class="bg-amber-400 text-zinc-950 w-full py-3 rounded-lg font-black text-xs uppercase tracking-wider hover:bg-amber-300 transition">
+        <input type="text" id="aNombre" placeholder="Nombre completo" class="hidden w-full border border-gray-300 p-2.5 text-xs rounded-sm focus:outline-none focus:border-black">
+        <input type="email" id="aEmail" placeholder="Correo electrónico" required class="w-full border border-gray-300 p-2.5 text-xs rounded-sm focus:outline-none focus:border-black">
+        <input type="password" id="aPassword" placeholder="Contraseña" required class="w-full border border-gray-300 p-2.5 text-xs rounded-sm focus:outline-none focus:border-black">
+        <button class="bg-black text-white w-full py-3 text-xs font-bold uppercase tracking-widest hover:bg-gray-800 transition">
           Confirmar
         </button>
       </form>
 
-      <button onclick="cambiarModoAuth()" id="btnModo" class="text-xs text-amber-400 mt-4 underline block w-full text-center">
+      <button onclick="cambiarModoAuth()" id="btnModo" class="text-xs text-gray-600 mt-4 underline block w-full text-center">
         ¿No tienes cuenta? Regístrate
       </button>
-      <button onclick="mostrarModalAuth()" class="text-xs text-zinc-500 mt-2 block w-full text-center">
+      <button onclick="mostrarModalAuth()" class="text-xs text-gray-400 mt-2 block w-full text-center">
         Cancelar
       </button>
     </div>
@@ -127,17 +139,23 @@
       const productos = await res.json();
       
       gridProductos.innerHTML = productos.map(p => `
-        <div class="bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden flex flex-col justify-between hover:border-amber-400/50 transition duration-300">
+        <div class="group relative flex flex-col justify-between">
           <div>
-            <div class="relative">
-              <img src="${p.imagen}" class="h-52 w-full object-cover" alt="${p.nombre}">
-              <span class="absolute top-2 left-2 bg-zinc-950/80 text-amber-400 text-[10px] font-extrabold px-2 py-1 rounded uppercase tracking-wider border border-amber-400/30">${p.marca_nombre}</span>
+            <!-- Contenedor Imagen con Botón de Corazón -->
+            <div class="relative aspect-square w-full bg-gray-50 mb-3 overflow-hidden rounded-sm flex items-center justify-center">
+              <button onclick="this.classList.toggle('text-red-500')" class="absolute top-3 right-3 z-10 text-gray-400 hover:text-red-500 transition">
+                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+              </button>
+              <img src="${p.imagen}" class="object-cover w-full h-full group-hover:scale-105 transition duration-500" alt="${p.nombre}">
             </div>
-            <div class="p-4">
-              <h4 class="font-bold text-zinc-100 text-sm tracking-wide">${p.nombre}</h4>
-              <p class="text-amber-400 font-black text-lg mt-2">$${p.precio} USD</p>
-            </div>
+            
+            <!-- Etiqueta y Detalles del Producto -->
+            <span class="text-[10px] text-gray-500 tracking-wider block mb-0.5">Nueva temporada</span>
+            <h4 class="font-bold text-gray-900 text-sm tracking-tight">${p.marca_nombre}</h4>
+            <p class="text-xs text-gray-600 font-normal line-clamp-1 mt-0.5">${p.nombre}</p>
           </div>
+          
+          <p class="font-bold text-gray-900 text-sm mt-3">$${Number(p.precio).toLocaleString('es-MX')}</p>
         </div>
       `).join('');
     }
@@ -177,8 +195,8 @@
       const u = localStorage.getItem('usuario');
       if (u) {
         authArea.innerHTML = `
-          <span class="mr-3 text-xs text-zinc-300">Bienvenido, <b class="text-amber-400">${u}</b></span> 
-          <button onclick="logout()" class="text-xs bg-red-600 hover:bg-red-700 text-white px-3 py-1.5 rounded-md font-bold">Salir</button>
+          <span class="mr-3 text-xs text-gray-600">Hola, <b class="text-black">${u}</b></span> 
+          <button onclick="logout()" class="text-xs text-red-600 hover:underline font-bold">Salir</button>
         `;
       }
     }
