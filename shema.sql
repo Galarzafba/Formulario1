@@ -47,20 +47,22 @@ INSERT INTO categorias (id, nombre) VALUES
   (4, 'Gorras');
 
 INSERT INTO marcas (id, nombre) VALUES 
-  (1, 'Hellstar'), 
-  (2, 'Amiri'), 
-  (3, 'Valley Dreams'), 
-  (4, 'Barbas Hats'), 
-  (5, 'Dandy');
+  (1, 'Denim Tears'),
+  (2, 'Hellstar'), 
+  (3, 'Amiri'), 
+  (4, 'Valley Dreams'), 
+  (5, 'Barbas Hats'), 
+  (6, 'Dandy');
 
 INSERT INTO productos (nombre, precio, imagen, id_categoria, id_marca) VALUES
-  ('Hoodie Hellstar Path to Paradise', 280.00, 'img/hoodie-hellstar.jpg', 1, 1),
-  ('Playera Graphic Hellstar Studios', 150.00, 'img/playera-hellstar.jpg', 2, 1),
-  ('Jeans Amiri MX1 Distressed', 890.00, 'img/jeans-amiri.jpg', 3, 2),
-  ('Sudadera Amiri Core Logo', 650.00, 'img/sudadera-amiri.jpg', 1, 2),
-  ('Playera Valley Dreams Oversized', 95.00, 'img/playera-valleydreams.jpg', 2, 3),
-  ('Jogger Valley Dreams Essential', 120.00, 'img/jogger-valleydreams.jpg', 3, 3),
-  ('Gorra Barbas Hats Edition Black', 110.00, 'img/gorra-barbas-black.jpg', 4, 4),
-  ('Gorra Barbas Hats Leather Patch', 125.00, 'img/gorra-barbas-leather.jpg', 4, 4),
-  ('Gorra Dandy Crown Signature', 140.00, 'img/gorra-dandy-crown.jpg', 4, 5),
-  ('Gorra Dandy Velvet Edition', 160.00, 'img/gorra-dandy-velvet.jpg', 4, 5);
+  ('hoodie manga larga Cotton Wreath', 8662.00, 'img/denim-tears-hoodie.jpg', 1, 1),
+  ('playera manga larga Wreath', 7180.00, 'img/denim-tears-sweatshirt.jpg', 2, 1),
+  ('jeans Cotton Wreath Light Wash', 9200.00, 'img/denim-tears-jeans.jpg', 3, 1),
+  ('hoodie Path to Paradise', 5800.00, 'img/hoodie-hellstar.jpg', 1, 2),
+  ('playera Graphic Studios', 3200.00, 'img/playera-hellstar.jpg', 2, 2),
+  ('jeans MX1 Distressed', 18500.00, 'img/jeans-amiri.jpg', 3, 3),
+  ('sudadera Core Logo', 12500.00, 'img/sudadera-amiri.jpg', 1, 3),
+  ('playera Oversized Logo', 1900.00, 'img/playera-valleydreams.jpg', 2, 4),
+  ('gorra Edition Black', 2400.00, 'img/gorra-barbas-black.jpg', 4, 5),
+  ('gorra Crown Signature', 2800.00, 'img/gorra-dandy-crown.jpg', 4, 6);
+
