@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>DRIPhub - Streetwear & Luxury Caps</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-zinc-950 text-zinc-100 font-sans">
+
+  <!-- Navegación -->
+  <nav class="bg-zinc-900 border-b border-zinc-800 p-4 flex justify-between items-center sticky top-0 z-40">
+    <h1 class="text-2xl font-black tracking-widest text-amber-400">DRIP<span class="text-white">HUB</span></h1>
+    <div id="authArea">
+      <button onclick="mostrarModalAuth()" class="bg-amber-400 text-zinc-950 px-4 py-2 rounded-md font-bold hover:bg-amber-300 transition">
+        Cuenta / Registro
+      </button>
+    </div>
+  </nav>
+
+  <!-- Banner Hero Streetwear -->
+  <header class="bg-zinc-900 border-b border-zinc-800 py-16 px-6 text-center relative overflow-hidden">
+    <span class="text-amber-400 text-xs font-bold tracking-widest uppercase mb-2 block">Colección Exclusiva 2026</span>
+    <h2 class="text-5xl font-extrabold mb-4 uppercase tracking-tight">Hellstar • Amiri • Valley Dreams</h2>
+    <p class="text-zinc-400 max-w-xl mx-auto mb-8 text-sm">
+      Drop oficial de streetwear, ropa urbana premium y gorras exclusivas Barbas Hats & Dandy.
+    </p>
+    <button onclick="mostrarModalAuth()" class="bg-white text-zinc-950 px-8 py-3 rounded-full font-black uppercase text-xs tracking-wider hover:bg-amber-400 transition shadow-lg">
+      Regístrate para ver novedades
+    </button>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-6 py-10">
+    <!-- Barra de Filtros -->
+    <div class="bg-zinc-900 p-5 rounded-xl border border-zinc-800 mb-10 flex flex-wrap gap-6 items-center">
+      <span class="font-bold text-amber-400 text-sm uppercase tracking-wider">Filtrar por:</span>
+      <div>
+        <label class="text-xs font-semibold text-zinc-400 block mb-1">Categoría</label>
+        <select id="selCategoria" onchange="cargarProductos()" class="bg-zinc-950 border border-zinc-800 p-2.5 rounded-lg text-sm text-zinc-200 focus:outline-none focus:border-amber-400">
+          <option value="">Todas las categorías</option>
+        </select>
+      </div>
+      <div>
+        <label class="text-xs font-semibold text-zinc-400 block mb-1">Marca</label>
+        <select id="selMarca" onchange="cargarProductos()" class="bg-zinc-950 border border-zinc-800 p-2.5 rounded-lg text-sm text-zinc-200 focus:outline-none focus:border-amber-400">
+          <option value="">Todas las marcas</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Catálogo de Productos -->
+    <h3 class="text-xl font-bold mb-6 text-zinc-100 uppercase tracking-wider">Catálogo Disponible</h3>
+    <div id="gridProductos" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+
+    <!-- Formulario de Pedidos -->
+    <section class="bg-zinc-900 p-8 rounded-xl border border-zinc-800 mt-16 max-w-lg mx-auto">
+      <h3 class="text-xl font-bold mb-2 text-white text-center uppercase tracking-wide">Solicitudes y Cotizaciones</h3>
+      <p class="text-xs text-zinc-400 mb-6 text-center">¿Buscas algún modelo o talla especial de gorras o prendas? Escríbenos.</p>
+      
+      <form onsubmit="guardarContacto(event)" class="space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-zinc-400 mb-1">Nombre</label>
+          <input type="text" id="cNombre" placeholder="Tu nombre" required class="w-full bg-zinc-950 border border-zinc-800 p-3 rounded-lg text-sm text-white focus:outline-none focus:border-amber-400">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-zinc-400 mb-1">Correo Electrónico</label>
+          <input type="email" id="cEmail" placeholder="correo@ejemplo.com" required class="w-full bg-zinc-950 border border-zinc-800 p-3 rounded-lg text-sm text-white focus:outline-none focus:border-amber-400">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-zinc-400 mb-1">Mensaje o Modelo solicitado</label>
+          <textarea id="cMensaje" placeholder="Especifica modelo, marca y talla..." required class="w-full bg-zinc-950 border border-zinc-800 p-3 rounded-lg text-sm text-white h-24 focus:outline-none focus:border-amber-400"></textarea>
+        </div>
+        <button class="bg-amber-400 hover:bg-amber-300 text-zinc-950 w-full py-3 rounded-lg font-black text-xs uppercase tracking-wider transition">
+          Enviar Mensaje
+        </button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-zinc-900 border-t border-zinc-800 text-zinc-500 text-center py-6 mt-16 text-xs">
+    <p>© 2026 DRIPHUB Streetwear - Hellstar, Amiri, Valley Dreams, Barbas Hats & Dandy</p>
+  </footer>
+
+  <!-- Modal Autenticación -->
+  <div id="modalAuth" class="hidden fixed inset-0 bg-black/80 backdrop-blur-md flex justify-center items-center z-50">
+    <div class="bg-zinc-900 p-6 rounded-xl border border-zinc-800 shadow-2xl w-86 max-w-sm">
+      <h3 id="modalTitulo" class="text-xl font-bold text-white mb-4 text-center">Iniciar Sesión</h3>
+      
+      <form onsubmit="procesarAuth(event)" class="space-y-3">
+        <input type="text" id="aNombre" placeholder="Nombre completo" class="hidden w-full bg-zinc-950 border border-zinc-800 p-3 rounded-lg text-sm text-white focus:outline-none focus:border-amber-400">
+        <input type="email" id="aEmail" placeholder="Correo electrónico" required class="w-full bg-zinc-950 border border-zinc-800 p-3 rounded-lg text-sm text-white focus:outline-none focus:border-amber-400">
+        <input type="password" id="aPassword" placeholder="Contraseña" required class="w-full bg-zinc-950 border border-zinc-800 p-3 rounded-lg text-sm text-white focus:outline-none focus:border-amber-400">
+        <button class="bg-amber-400 text-zinc-950 w-full py-3 rounded-lg font-black text-xs uppercase tracking-wider hover:bg-amber-300 transition">
+          Confirmar
+        </button>
+      </form>
+
+      <button onclick="cambiarModoAuth()" id="btnModo" class="text-xs text-amber-400 mt-4 underline block w-full text-center">
+        ¿No tienes cuenta? Regístrate
+      </button>
+      <button onclick="mostrarModalAuth()" class="text-xs text-zinc-500 mt-2 block w-full text-center">
+        Cancelar
+      </button>
+    </div>
+  </div>
+
+  <script>
+    let esRegistro = false;
+
+    window.onload = () => {
+      cargarFiltros();
+      cargarProductos();
+      revisarSesion();
+    };
+
+    async function cargarFiltros() {
+      const res = await fetch('api.php?action=filtros');
+      const data = await res.json();
+      data.categorias.forEach(c => selCategoria.innerHTML += `<option value="${c.id}">${c.nombre}</option>`);
+      data.marcas.forEach(m => selMarca.innerHTML += `<option value="${m.id}">${m.nombre}</option>`);
+    }
+
+    async function cargarProductos() {
+      const cat = selCategoria.value;
+      const marca = selMarca.value;
+      const res = await fetch(`api.php?action=productos&categoria=${cat}&marca=${marca}`);
+      const productos = await res.json();
+      
+      gridProductos.innerHTML = productos.map(p => `
+        <div class="bg-zinc-900 border border-zinc-800 rounded-xl overflow-hidden flex flex-col justify-between hover:border-amber-400/50 transition duration-300">
+          <div>
+            <div class="relative">
+              <img src="${p.imagen}" class="h-52 w-full object-cover" alt="${p.nombre}">
+              <span class="absolute top-2 left-2 bg-zinc-950/80 text-amber-400 text-[10px] font-extrabold px-2 py-1 rounded uppercase tracking-wider border border-amber-400/30">${p.marca_nombre}</span>
+            </div>
+            <div class="p-4">
+              <h4 class="font-bold text-zinc-100 text-sm tracking-wide">${p.nombre}</h4>
+              <p class="text-amber-400 font-black text-lg mt-2">$${p.precio} USD</p>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    async function guardarContacto(e) {
+      e.preventDefault();
+      const body = { nombre: cNombre.value, email: cEmail.value, mensaje: cMensaje.value };
+      const res = await fetch('api.php?action=contacto', { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body) });
+      const data = await res.json();
+      alert(data.mensaje);
+      e.target.reset();
+    }
+
+    async function procesarAuth(e) {
+      e.preventDefault();
+      const action = esRegistro ? 'registro' : 'login';
+      const body = { email: aEmail.value, password: aPassword.value, nombre: aNombre.value };
+      
+      const res = await fetch(`api.php?action=${action}`, { method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body) });
+      const data = await res.json();
+
+      if (data.ok) {
+        if (!esRegistro) {
+          localStorage.setItem('usuario', data.usuario);
+          revisarSesion();
+          mostrarModalAuth();
+        } else {
+          alert(data.mensaje);
+          cambiarModoAuth();
+        }
+      } else {
+        alert(data.mensaje);
+      }
+    }
+
+    function revisarSesion() {
+      const u = localStorage.getItem('usuario');
+      if (u) {
+        authArea.innerHTML = `
+          <span class="mr-3 text-xs text-zinc-300">Bienvenido, <b class="text-amber-400">${u}</b></span> 
+          <button onclick="logout()" class="text-xs bg-red-600 hover:bg-red-700 text-white px-3 py-1.5 rounded-md font-bold">Salir</button>
+        `;
+      }
+    }
+
+    function logout() { localStorage.clear(); location.reload(); }
+    function mostrarModalAuth() { modalAuth.classList.toggle('hidden'); }
+    function cambiarModoAuth() {
+      esRegistro = !esRegistro;
+      modalTitulo.innerText = esRegistro ? 'Registro de Usuario' : 'Iniciar Sesión';
+      btnModo.innerText = esRegistro ? '¿Ya tienes cuenta? Inicia sesión' : '¿No tienes cuenta? Regístrate';
+      aNombre.classList.toggle('hidden', !esRegistro);
+    }
+  </script>
+</body>
+</html>
